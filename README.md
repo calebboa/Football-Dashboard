@@ -5,6 +5,7 @@ Ein interaktives Dashboard zur Analyse von Fußball-Transfers, Marktwerten und i
 
 ## 📂 Projektstruktur
 
+```bash
 fussball-dashboard/
 ├── data/                   # Rohdaten und bereinigte Datensätze
 │   ├── players_transfers.csv
@@ -21,6 +22,7 @@ fussball-dashboard/
 │   ├── geo_choropleth.py   # Ländervergleich
 │   └── internationale_transfers.py # Transferströme
 └── README.md               # Diese Datei
+```
 
 ## 📌 Features
 
