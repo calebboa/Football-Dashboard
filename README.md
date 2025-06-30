@@ -36,8 +36,10 @@ fussball-dashboard/
   <img width="1462" alt="Bildschirmfoto 2025-06-29 um 19 33 37" src="https://github.com/user-attachments/assets/6f17b434-9ada-4a38-ba96-80a8bf2ae30f" />
 
 - **Ländervergleich**: Choropleth-Karten für Marktwerte und Transferausgaben nach Nationen
-  <img width="1462" alt="Bildschirmfoto 2025-06-29 um 19 34 22" src="https://github.com/user-attachments/assets/abb31a5b-fd7f-4b04-91bd-d1eb036f0d3b" />
-  
+  <img width="1462" alt="Bildschirmfoto 2025-06-30 um 10 03 52" src="https://github.com/user-attachments/assets/b2a1f650-382b-4726-ab43-70bd4b783292" />
+  <img width="1462" alt="Bildschirmfoto 2025-06-30 um 10 04 17" src="https://github.com/user-attachments/assets/c23de5be-319d-49f6-b902-f07dc1111a2b" />
+
+
 - **Internationale Transfers**: Sankey-Diagramm für Transferströme zwischen Top-Ligen
   <img width="1462" alt="Bildschirmfoto 2025-06-29 um 19 35 39" src="https://github.com/user-attachments/assets/ea2fe674-3abc-4e70-a4c9-d17503be5993" />
 
