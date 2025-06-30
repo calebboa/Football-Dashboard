@@ -24,7 +24,7 @@ layout = html.Div([
                 dcc.RadioItems(
                     id='map-type',
                     options=[
-                        {'label': 'Durchschn. Marktwert pro Nation', 'value': 'market_value'},
+                        {'label': 'Median der Marktwerte pro Nation', 'value': 'market_value'},
                         {'label': 'Transferausgaben pro Land', 'value': 'transfer_fee'}
                     ],
                     value='market_value',
@@ -80,9 +80,15 @@ def update_choropleth(map_type, top_n, min_value):
         # Daten einlesen
         df = pd.read_csv("fußball-dashboard/data/cleaned_transfersGit.csv")
 
-         # Gruppieren der Daten nach Nationalität und Berechnung des Durchschnitts
-        df = df[df['market_value'] >= min_value]
-        agg = df.groupby('nationality', as_index=False)['market_value'].mean()
+        df = df[(df['market_value'] > 0) & (df['market_value'] >= min_value)]
+
+        counts = df['nationality'].value_counts()
+        valid_countries = counts[counts >= 10].index
+        df = df[df['nationality'].isin(valid_countries)]
+
+
+        # Gruppieren der Daten nach Nationalität und Berechnung des Medians
+        agg = df.groupby('nationality', as_index=False)['market_value'].median()
         agg['market_value'] /= 1_000_000
         agg = agg.nlargest(top_n, 'market_value')
 
@@ -91,10 +97,10 @@ def update_choropleth(map_type, top_n, min_value):
             locationmode='country names',
             z=agg['market_value'],
             colorscale='viridis',
-            colorbar_title='Durchschn. Marktwert in Mio. €'
+            colorbar_title='Median der Marktwerte in Mio. €'
         ))
-        fig.update_layout(title_text='Durchschn. Marktwert pro Nationalität')
-
+        fig.update_layout(title_text='Median der Marktwerte pro Nationalität')
+        
     else:
         # Daten einlesen
         df = pd.read_csv("fußball-dashboard/data/merged_transfers.csv")

@@ -135,8 +135,14 @@ def normalize_country(name):
 df1['nationality'] = df1['nationality'].apply(normalize_country) 
 df1 = df1[df1['transfer_fee'] <= 200_000_000] # Filtert Transfers über 200 Mio. Euro aus
 
+# Schritt 1: Filtern auf höchsten Marktwert pro Spieler+Saison
+max_market_df = df1[df1.groupby(['name', 'season'])['market_value'].transform('max') == df1['market_value']]
+
+# Schritt 2: Doppelte Zeilen (z. B. Mo Salah 4x) auf eine reduzieren
+df1 = max_market_df.drop_duplicates(subset=['name'], keep='first').reset_index(drop=True)
+
 # Spieler pro Saison zählen, bei wie vielen Vereinen sie spielen
-player_season_club_counts = df1.groupby(['season', 'name'])['team_name'].nunique()
+player_season_club_counts = df1.groupby(['name'])['team_name'].nunique()
 
 # Funktion zur Klassifizierung der Transfers
 def classify_transfer_direction(row):
@@ -219,3 +225,12 @@ merged_df.drop(columns=['age_y', 'nationality_y', 'position_y'], inplace=True, e
 
 # Save the merged DataFrame to a CSV file
 merged_df.to_csv("fußball-dashboard/data/merged_transfers.csv", index=False)
+
+# # print(df1['nationality'].unique())
+# print("Anzahl UK-Spieler:", len(df1[df1['nationality'] == 'United Kingdom']))
+# print(df1[df1['nationality'] == 'United Kingdom']['market_value'].describe())
+
+# print("Anzahl Canada-Spieler:", len(df1[df1['nationality'] == 'Canada']))
+# print(df1[df1['nationality'] == 'Canada']['market_value'].describe())
+
+
