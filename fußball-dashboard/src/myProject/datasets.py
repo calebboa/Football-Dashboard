@@ -225,12 +225,3 @@ merged_df.drop(columns=['age_y', 'nationality_y', 'position_y'], inplace=True, e
 
 # Save the merged DataFrame to a CSV file
 merged_df.to_csv("fußball-dashboard/data/merged_transfers.csv", index=False)
-
-# # print(df1['nationality'].unique())
-# print("Anzahl UK-Spieler:", len(df1[df1['nationality'] == 'United Kingdom']))
-# print(df1[df1['nationality'] == 'United Kingdom']['market_value'].describe())
-
-# print("Anzahl Canada-Spieler:", len(df1[df1['nationality'] == 'Canada']))
-# print(df1[df1['nationality'] == 'Canada']['market_value'].describe())
-
-

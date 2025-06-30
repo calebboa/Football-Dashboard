@@ -50,7 +50,7 @@ layout = html.Div(
                         style={"fontSize": "1.25rem", "color": "#dbe9f4"}
                     ),
                     html.Br(),
-                    dcc.Link("🚀 Los geht’s", href="/avg_position", className="btn btn-primary btn-lg animate__animated animate__fadeInRight")
+                    dcc.Link("🚀 Los geht’s", href="/geo_choropleth", className="btn btn-primary btn-lg animate__animated animate__fadeInRight")
                 ], md=6),
             ], className="my-5"),
             dbc.Row([
